@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://8xgolc6h3pck"]
+
+[ext_resource type="Script" path="res://icicle.gd" id="1_5kj0a"]
+[ext_resource type="Texture2D" uid="uid://dm6r82612i3fh" path="res://icicle.png" id="2_hdvm6"]
+[ext_resource type="AudioStream" uid="uid://dscogmtg61yqv" path="res://brickBreak.mp3" id="3_epm64"]
+[ext_resource type="PackedScene" uid="uid://rs8d033ae63p" path="res://fluffle_destruction.tscn" id="4_tqebe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3i08x"]
+size = Vector2(3, 47)
+
+[node name="Icicle" type="CharacterBody2D" groups=["groundIcicle", "icicle"]]
+script = ExtResource("1_5kj0a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-6, 9)
+texture = ExtResource("2_hdvm6")
+
+[node name="Area2D" type="Area2D" parent="." groups=["groundIcicle", "icicle"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_3i08x")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+visibility_layer = 2
+stream = ExtResource("3_epm64")
+volume_db = -10.0
+pitch_scale = 2.17
+max_polyphony = 3
+
+[node name="IcicleDestruction" parent="." instance=ExtResource("4_tqebe")]
+amount = 10
+initial_velocity_min = 85.0
+initial_velocity_max = 250.0
+color = Color(0.329412, 0.564706, 1, 1)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

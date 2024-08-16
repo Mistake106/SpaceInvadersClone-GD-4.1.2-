@@ -1,0 +1,114 @@
+[gd_scene load_steps=7 format=3 uid="uid://rniexsljr28l"]
+
+[ext_resource type="Script" path="res://game_over_menu.gd" id="1_7bgmm"]
+[ext_resource type="Texture2D" uid="uid://pmeyo23sgv8q" path="res://play-button.png" id="2_7ur1c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0cg8"]
+bg_color = Color(0.45098, 0.388235, 0.431373, 1)
+border_width_left = 5
+border_width_top = 55
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pharn"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1der8"]
+bg_color = Color(1, 0.952941, 0.788235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pm5u0"]
+bg_color = Color(0.764706, 1, 0.760784, 1)
+
+[node name="GameOverMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_7bgmm")
+
+[node name="GameOverText" type="Label" parent="."]
+z_index = 1
+offset_left = 405.0
+offset_top = 123.0
+offset_right = 795.0
+offset_bottom = 231.0
+theme_override_colors/font_color = Color(0.45098, 0.388235, 0.431373, 1)
+theme_override_font_sizes/font_size = 53
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="GameOverPanel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f0cg8")
+
+[node name="RestartButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -42.0
+offset_right = 116.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.45098, 0.388235, 0.431373, 1)
+theme_override_colors/font_pressed_color = Color(0.396078, 0.788235, 0.396078, 1)
+theme_override_colors/font_hover_color = Color(0.831373, 0.839216, 0.219608, 1)
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxFlat_pharn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1der8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pm5u0")
+text = "RESTART"
+
+[node name="UnpauseButton" type="Button" parent="."]
+offset_left = 652.0
+offset_top = 421.0
+offset_right = 720.0
+offset_bottom = 489.0
+icon = ExtResource("2_7ur1c")
+flat = true
+
+[node name="ControlsInstruction" type="Label" parent="."]
+offset_left = 411.0
+offset_top = 491.0
+offset_right = 786.0
+offset_bottom = 547.0
+text = "MOVE:   A/D  or  LEFT ARROW / RIGHT ARROW
+FIRE:   SPACE  or  LEFT MOUSE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FlufflesKilled" type="Label" parent="."]
+offset_left = 409.0
+offset_top = 208.0
+offset_right = 789.0
+offset_bottom = 253.0
+theme_override_font_sizes/font_size = 30
+text = "KILLS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KillCount" type="Label" parent="."]
+offset_left = 409.0
+offset_top = 246.0
+offset_right = 791.0
+offset_bottom = 306.0
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="UnpauseButton" to="." method="_on_unpause_button_pressed"]

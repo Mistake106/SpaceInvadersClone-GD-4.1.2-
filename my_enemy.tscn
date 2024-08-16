@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://dkyqhjehxr1md"]
+
+[ext_resource type="Script" path="res://MyEnemy.gd" id="1_h23s8"]
+[ext_resource type="Texture2D" uid="uid://b2myghbkwf7de" path="res://Front_fluffle.png" id="2_p6vct"]
+[ext_resource type="Texture2D" uid="uid://c2s70am5ii7ob" path="res://Side_fluffle.png" id="3_b2e6v"]
+[ext_resource type="Texture2D" uid="uid://bdar86oyo4t6q" path="res://Back_fluffle.png" id="4_e05gq"]
+[ext_resource type="Texture2D" uid="uid://b0ddqtuhds81b" path="res://Side_Fluffle2.png" id="5_ovtdr"]
+[ext_resource type="PackedScene" uid="uid://rs8d033ae63p" path="res://fluffle_destruction.tscn" id="6_yh323"]
+[ext_resource type="PackedScene" uid="uid://dlp17gpk1ggda" path="res://fluffle_snow_destruction.tscn" id="7_rv01s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jqx3j"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_p6vct")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_b2e6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e05gq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ovtdr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwthi"]
+size = Vector2(46, 51)
+
+[node name="MyEnemy" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_h23s8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(12, 15.9292)
+scale = Vector2(0.309735, 0.309735)
+sprite_frames = SubResource("SpriteFrames_jqx3j")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(12, 18.5)
+shape = SubResource("RectangleShape2D_rwthi")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="fluffle destruction" parent="." instance=ExtResource("6_yh323")]
+
+[node name="fluffleSnowDestruction" parent="." instance=ExtResource("7_rv01s")]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

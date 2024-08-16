@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://cl4hfdphnhyuo"]
+
+[ext_resource type="Script" path="res://brick_power_up.gd" id="1_7q8kt"]
+[ext_resource type="Texture2D" uid="uid://y6ks70s4chee" path="res://Bucket.png" id="2_nk4nc"]
+[ext_resource type="PackedScene" uid="uid://rs8d033ae63p" path="res://fluffle_destruction.tscn" id="3_01d6w"]
+[ext_resource type="Texture2D" uid="uid://j84k2ak44lll" path="res://BucketParachute.png" id="3_q8wdv"]
+[ext_resource type="Texture2D" uid="uid://dcgq2ermxi1c2" path="res://Brick.png" id="4_qkaqv"]
+[ext_resource type="AudioStream" uid="uid://o7eut0m5ihcf" path="res://bricksFall.mp3" id="5_vo8w0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rlphw"]
+size = Vector2(52, 54)
+
+[node name="BrickPowerUp" type="CharacterBody2D" groups=["bucket"]]
+script = ExtResource("1_7q8kt")
+
+[node name="Bucket" type="Sprite2D" parent="."]
+texture = ExtResource("2_nk4nc")
+
+[node name="Parachute" type="Sprite2D" parent="."]
+texture = ExtResource("3_q8wdv")
+
+[node name="Area2D" type="Area2D" parent="." groups=["bucket"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 23)
+shape = SubResource("RectangleShape2D_rlphw")
+
+[node name="BucketDestruction" parent="." instance=ExtResource("3_01d6w")]
+texture = ExtResource("4_qkaqv")
+spread = 39.09
+angular_velocity_min = -332.8
+angular_velocity_max = 162.8
+scale_amount_min = 1.0
+scale_amount_max = 1.0
+scale_amount_curve = null
+color = Color(0.858824, 0.819608, 0.721569, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_vo8w0")
+pitch_scale = 0.92
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

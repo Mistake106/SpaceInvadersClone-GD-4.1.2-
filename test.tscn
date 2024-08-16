@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl4cml28527mp"]
+
+[ext_resource type="PackedScene" uid="uid://dlxu424jsrq6w" path="res://explosion.tscn" id="1_k1wx4"]
+[ext_resource type="PackedScene" uid="uid://rs8d033ae63p" path="res://fluffle_destruction.tscn" id="2_mbn3o"]
+[ext_resource type="PackedScene" uid="uid://dlp17gpk1ggda" path="res://fluffle_snow_destruction.tscn" id="3_qq0hw"]
+
+[node name="test" type="Node2D"]
+
+[node name="Explosion" parent="." instance=ExtResource("1_k1wx4")]
+
+[node name="fluffle destruction" parent="." instance=ExtResource("2_mbn3o")]
+
+[node name="fluffleSnowDestruction" parent="." instance=ExtResource("3_qq0hw")]
+position = Vector2(222, 143)

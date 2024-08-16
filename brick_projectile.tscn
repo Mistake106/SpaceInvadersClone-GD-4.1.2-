@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsnuprkfjn75u"]
+
+[ext_resource type="Script" path="res://brick_projectile.gd" id="1_d8qeh"]
+[ext_resource type="Texture2D" uid="uid://dcgq2ermxi1c2" path="res://Brick.png" id="1_hyxtj"]
+[ext_resource type="PackedScene" uid="uid://dlxu424jsrq6w" path="res://explosion.tscn" id="3_ww7h7"]
+[ext_resource type="AudioStream" uid="uid://dscogmtg61yqv" path="res://brickBreak.mp3" id="4_bm8k5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arskt"]
+size = Vector2(22, 19)
+
+[node name="BrickProjectile" type="RigidBody2D" groups=["brickMoving"]]
+position = Vector2(412, 238)
+mass = 4.0
+inertia = 1.0
+script = ExtResource("1_d8qeh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hyxtj")
+
+[node name="Area2D" type="Area2D" parent="." groups=["brickMoving"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -1.5)
+shape = SubResource("RectangleShape2D_arskt")
+
+[node name="Destruction" parent="." instance=ExtResource("3_ww7h7")]
+amount = 5
+lifetime = 2.0
+direction = Vector2(0, 1)
+spread = 45.46
+gravity = Vector2(0, 500)
+color = Color(0.65098, 0.494118, 0.458824, 1)
+color_ramp = null
+
+[node name="Destruction2" parent="." instance=ExtResource("3_ww7h7")]
+amount = 5
+lifetime = 1.0
+direction = Vector2(0, 1)
+spread = 47.27
+gravity = Vector2(0, 500)
+color = Color(0.490196, 0.317647, 0.278431, 1)
+color_ramp = null
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_bm8k5")
+volume_db = -10.0
+pitch_scale = 1.25
+max_polyphony = 3
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

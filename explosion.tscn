@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlxu424jsrq6w"]
+
+[sub_resource type="Curve" id="Curve_u5kvq"]
+_data = [Vector2(0.10989, 0.947368), 0.0, 0.0, 0, 0, Vector2(0.791209, 0.8), 0.0, 0.0, 0, 0, Vector2(1, 0.189474), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_olv8t"]
+offsets = PackedFloat32Array(0.0331126, 0.370861, 0.503311)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.833333, 0, 1, 1, 0, 0, 1)
+
+[node name="Explosion" type="CPUParticles2D"]
+z_index = 2
+position = Vector2(0, -2)
+emitting = false
+amount = 50
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 250.0
+initial_velocity_max = 500.0
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_u5kvq")
+color_ramp = SubResource("Gradient_olv8t")

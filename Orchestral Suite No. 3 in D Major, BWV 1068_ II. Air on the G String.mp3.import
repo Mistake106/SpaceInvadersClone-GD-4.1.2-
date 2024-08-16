@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bs06wjp6vxgy3"
+path="res://.godot/imported/Orchestral Suite No. 3 in D Major, BWV 1068_ II. Air on the G String.mp3-7aefe775c864d4d762006a3f19a35b1c.mp3str"
+
+[deps]
+
+source_file="res://Orchestral Suite No. 3 in D Major, BWV 1068_ II. Air on the G String.mp3"
+dest_files=["res://.godot/imported/Orchestral Suite No. 3 in D Major, BWV 1068_ II. Air on the G String.mp3-7aefe775c864d4d762006a3f19a35b1c.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

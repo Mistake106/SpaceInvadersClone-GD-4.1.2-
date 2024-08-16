@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ba5h1scs1xm2k"]
+
+[node name="SnowParticles" type="CPUParticles2D"]
+position = Vector2(472, -35)
+amount = 170
+lifetime = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(800, 2)
+gravity = Vector2(20, 100)
+scale_amount_min = 2.0
+scale_amount_max = 4.5

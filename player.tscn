@@ -1,0 +1,120 @@
+[gd_scene load_steps=14 format=3 uid="uid://xa2yr4vbrj64"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_mvl6b"]
+[ext_resource type="Texture2D" uid="uid://dwpcuvm0b8ak3" path="res://PlayerStanding.png" id="2_wep4q"]
+[ext_resource type="Texture2D" uid="uid://c747h4i0bvwjl" path="res://PlayerSplit.png" id="3_63myv"]
+[ext_resource type="Texture2D" uid="uid://bskmvmdvs5g5o" path="res://FestiveLightsMoving1.png" id="4_etufy"]
+[ext_resource type="AudioStream" uid="uid://cv5x76cqf5j8l" path="res://explosionSFX.mp3" id="4_ptsbc"]
+[ext_resource type="Texture2D" uid="uid://du3jb62giu74q" path="res://FestiveLightsMoving2.png" id="5_0g4um"]
+[ext_resource type="Texture2D" uid="uid://dr1x7wdkwxswt" path="res://FestiveLightsStanding1.png" id="6_usfyn"]
+[ext_resource type="Texture2D" uid="uid://bc3xjbx8i7aru" path="res://FestiveLightsStanding2.png" id="7_41qku"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o01xv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wep4q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_63myv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_63myv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wep4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wep4q")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ayh62"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_etufy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0g4um")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_usfyn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_41qku")
+}],
+"loop": true,
+"name": &"Moving",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_usfyn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_41qku")
+}],
+"loop": true,
+"name": &"Standing",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_ojtnw"]
+offsets = PackedFloat32Array(0, 0.239521)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tn33p"]
+gradient = SubResource("Gradient_ojtnw")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gomfc"]
+radius = 24.0
+height = 74.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_mvl6b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 15)
+sprite_frames = SubResource("SpriteFrames_o01xv")
+autoplay = "default"
+
+[node name="AnimatedLights" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1, 15)
+sprite_frames = SubResource("SpriteFrames_ayh62")
+animation = &"Moving"
+autoplay = "Standing"
+
+[node name="LaserPointer" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(6, -920)
+rotation = -1.57079
+scale = Vector2(6.99805, 1.09415)
+texture = SubResource("GradientTexture1D_tn33p")
+
+[node name="Area2D" type="Area2D" parent="." groups=["player"]]
+position = Vector2(-6, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 14)
+shape = SubResource("CapsuleShape2D_gomfc")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(6, -36)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ptsbc")
+volume_db = -15.0
+pitch_scale = 4.6
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://da4ax0mlhtnus"]
+
+[ext_resource type="Script" path="res://enemy_spawner.gd" id="1_7essj"]
+[ext_resource type="Texture2D" uid="uid://buhr2ue7cs5fc" path="res://RemiliaBossBRD.png" id="2_4limk"]
+
+[node name="EnemySpawner" type="CharacterBody2D"]
+script = ExtResource("1_7essj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.247788, 0.247788)
+texture = ExtResource("2_4limk")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.663
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

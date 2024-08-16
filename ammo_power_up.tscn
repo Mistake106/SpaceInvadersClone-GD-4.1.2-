@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://7mncjar32xok"]
+
+[ext_resource type="Script" path="res://ammo_power_up.gd" id="1_ios5m"]
+[ext_resource type="Texture2D" uid="uid://bftb3xvplmc7r" path="res://AmmoBox.png" id="1_v6yvn"]
+[ext_resource type="Texture2D" uid="uid://b6mildx5wjtsu" path="res://Parachute.png" id="2_5hwb5"]
+[ext_resource type="PackedScene" uid="uid://dlxu424jsrq6w" path="res://explosion.tscn" id="4_q1ww8"]
+[ext_resource type="AudioStream" uid="uid://dp5aqvoyhytps" path="res://launchMissile.mp3" id="5_p22sm"]
+[ext_resource type="AudioStream" uid="uid://eak28h4kykbc" path="res://AmmoPickUpSound.mp3" id="6_gjldm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rr1vj"]
+size = Vector2(58, 53)
+
+[node name="AmmoPowerUp" type="CharacterBody2D" groups=["bucket"]]
+script = ExtResource("1_ios5m")
+
+[node name="AmmoBox" type="Sprite2D" parent="."]
+texture = ExtResource("1_v6yvn")
+
+[node name="Parachute" type="Sprite2D" parent="."]
+texture = ExtResource("2_5hwb5")
+
+[node name="Area2D" type="Area2D" parent="." groups=["bucket"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 23.5)
+shape = SubResource("RectangleShape2D_rr1vj")
+
+[node name="Explosion" parent="." instance=ExtResource("4_q1ww8")]
+amount = 2000
+lifetime = 2.0
+speed_scale = 3.0
+emission_shape = 1
+emission_sphere_radius = 128.0
+
+[node name="ExplosionSF" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -2)
+stream = ExtResource("5_p22sm")
+volume_db = -7.0
+pitch_scale = 0.4
+
+[node name="PickUpSF" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_gjldm")
+volume_db = 6.0
+pitch_scale = 0.85
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

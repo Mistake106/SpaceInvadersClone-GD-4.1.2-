@@ -1,0 +1,196 @@
+[gd_scene load_steps=12 format=3 uid="uid://bbgg2dosmbewt"]
+
+[ext_resource type="PackedScene" uid="uid://xa2yr4vbrj64" path="res://player.tscn" id="1_0f80y"]
+[ext_resource type="Script" path="res://main.gd" id="1_w6vv4"]
+[ext_resource type="PackedScene" uid="uid://d1211i54gmtdb" path="res://brick.tscn" id="2_ipsxo"]
+[ext_resource type="Texture2D" uid="uid://c0kdfxocs6ij1" path="res://sound-off.png" id="4_7ns70"]
+[ext_resource type="PackedScene" uid="uid://rniexsljr28l" path="res://game_over_menu.tscn" id="4_7swbc"]
+[ext_resource type="PackedScene" uid="uid://da4ax0mlhtnus" path="res://enemy_spawner.tscn" id="5_itxdg"]
+[ext_resource type="AudioStream" uid="uid://bs06wjp6vxgy3" path="res://Orchestral Suite No. 3 in D Major, BWV 1068_ II. Air on the G String.mp3" id="6_l311c"]
+[ext_resource type="Texture2D" uid="uid://cuwelepxpsd5h" path="res://pause-button.png" id="7_mc214"]
+[ext_resource type="PackedScene" uid="uid://ba5h1scs1xm2k" path="res://snow.tscn" id="9_ryue7"]
+[ext_resource type="Texture2D" uid="uid://7wgexrmkfl08" path="res://Background.png" id="10_xasil"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3t5hg"]
+size = Vector2(1491, 51)
+
+[node name="Main" type="Node"]
+script = ExtResource("1_w6vv4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 328)
+
+[node name="Player" parent="." instance=ExtResource("1_0f80y")]
+position = Vector2(618, 600)
+
+[node name="GameOverMenu" parent="." instance=ExtResource("4_7swbc")]
+visible = false
+
+[node name="MuteMusic" type="Button" parent="GameOverMenu"]
+offset_left = 493.0
+offset_top = 426.0
+offset_right = 501.0
+offset_bottom = 434.0
+icon = ExtResource("4_7ns70")
+flat = true
+
+[node name="EnemySpawner" parent="." instance=ExtResource("5_itxdg")]
+position = Vector2(0, -142)
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(576, 327)
+stream = ExtResource("6_l311c")
+
+[node name="PauseButton" type="Button" parent="."]
+offset_left = -24.0
+offset_top = 630.0
+offset_right = 24.0
+offset_bottom = 678.0
+icon = ExtResource("7_mc214")
+flat = true
+
+[node name="SnowParticles" parent="." instance=ExtResource("9_ryue7")]
+position = Vector2(578, -44)
+
+[node name="Brick" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(208, 437)
+
+[node name="Brick2" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(295, 437)
+
+[node name="Brick3" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(273, 437)
+
+[node name="Brick4" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(251, 437)
+
+[node name="Brick5" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(230, 437)
+
+[node name="Brick6" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(208, 410)
+
+[node name="Brick7" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(295, 410)
+
+[node name="Brick8" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(273, 410)
+
+[node name="Brick9" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(251, 410)
+
+[node name="Brick10" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(230, 410)
+
+[node name="Brick11" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(317, 437)
+
+[node name="Brick12" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(404, 437)
+
+[node name="Brick13" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(382, 437)
+
+[node name="Brick14" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(360, 437)
+
+[node name="Brick15" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(339, 437)
+
+[node name="Brick16" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(317, 410)
+
+[node name="Brick17" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(404, 410)
+
+[node name="Brick18" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(382, 410)
+
+[node name="Brick19" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(360, 410)
+
+[node name="Brick20" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(339, 410)
+
+[node name="Brick21" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(764, 437)
+
+[node name="Brick22" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(851, 437)
+
+[node name="Brick23" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(829, 437)
+
+[node name="Brick24" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(807, 437)
+
+[node name="Brick25" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(786, 437)
+
+[node name="Brick26" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(764, 410)
+
+[node name="Brick27" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(851, 410)
+
+[node name="Brick28" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(829, 410)
+
+[node name="Brick29" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(807, 410)
+
+[node name="Brick30" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(786, 410)
+
+[node name="Brick31" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(873, 437)
+
+[node name="Brick32" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(960, 437)
+
+[node name="Brick33" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(938, 437)
+
+[node name="Brick34" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(916, 437)
+
+[node name="Brick35" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(895, 437)
+
+[node name="Brick36" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(873, 410)
+
+[node name="Brick37" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(960, 410)
+
+[node name="Brick38" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(938, 410)
+
+[node name="Brick39" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(916, 410)
+
+[node name="Brick40" parent="." instance=ExtResource("2_ipsxo")]
+position = Vector2(895, 410)
+
+[node name="border" type="Area2D" parent="." groups=["border"]]
+position = Vector2(567, 188)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border"]
+position = Vector2(43, 569)
+shape = SubResource("RectangleShape2D_3t5hg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="border"]
+position = Vector2(19, -423)
+shape = SubResource("RectangleShape2D_3t5hg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(576, 328)
+texture = ExtResource("10_xasil")
+
+[connection signal="showMenu" from="Player" to="GameOverMenu" method="_on_player_show_menu"]
+[connection signal="hidePause" from="GameOverMenu" to="." method="_on_game_over_menu_hide_pause"]
+[connection signal="restart" from="GameOverMenu" to="." method="_on_game_over_menu_restart"]
+[connection signal="unpause" from="GameOverMenu" to="." method="_on_game_over_menu_unpause"]
+[connection signal="pressed" from="GameOverMenu/MuteMusic" to="." method="_on_mute_music_pressed"]
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

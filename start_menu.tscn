@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://cf33k1on5y7mt"]
+
+[ext_resource type="Script" path="res://start_menu.gd" id="1_gqlef"]
+[ext_resource type="Texture2D" uid="uid://c7u434523an72" path="res://MainMenu.png" id="1_rk78m"]
+[ext_resource type="AudioStream" uid="uid://b4yd6i5bc7lih" path="res://MainMenuMusic.mp3" id="3_4k0py"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6rrgj"]
+bg_color = Color(0.45098, 0.388235, 0.431373, 1)
+
+[node name="StartMenu" type="Node"]
+script = ExtResource("1_gqlef")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(617, 348)
+scale = Vector2(0.821016, 0.821016)
+texture = ExtResource("1_rk78m")
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 3.0
+offset_top = 310.0
+offset_right = 152.0
+offset_bottom = 341.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_6rrgj")
+text = "QUIT"
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 3.0
+offset_top = 239.0
+offset_right = 182.0
+offset_bottom = 281.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_6rrgj")
+text = "PLAY"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(3, 239)
+stream = ExtResource("3_4k0py")
+volume_db = -15.0
+pitch_scale = 0.96
+
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
