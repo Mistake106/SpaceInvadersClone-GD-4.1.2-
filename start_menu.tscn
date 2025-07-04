@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://start_menu.gd" id="1_gqlef"]
 [ext_resource type="Texture2D" uid="uid://c7u434523an72" path="res://MainMenu.png" id="1_rk78m"]
-[ext_resource type="AudioStream" uid="uid://b4yd6i5bc7lih" path="res://MainMenuMusic.mp3" id="3_4k0py"]
+[ext_resource type="AudioStream" uid="uid://tcncpqe1ve5b" path="res://MainMenuTheme.mp3" id="3_6t41a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6rrgj"]
 bg_color = Color(0.45098, 0.388235, 0.431373, 1)
@@ -37,8 +37,7 @@ text = "PLAY"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(3, 239)
-stream = ExtResource("3_4k0py")
-volume_db = -15.0
+stream = ExtResource("3_6t41a")
 pitch_scale = 0.96
 
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
